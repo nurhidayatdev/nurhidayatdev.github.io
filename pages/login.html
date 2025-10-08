@@ -108,7 +108,7 @@
           <label for="password" class="form-label">Kata Sandi</label>
           <input type="password" class="form-control" id="password" name="password" placeholder="Masukkan kata sandi">
           <button type="button" class="toggle-password" id="togglePassword" aria-label="Tampilkan kata sandi">
-            🐵
+            👁️‍🗨️
           </button>
           <div class="invalid-feedback">Kata sandi wajib diisi dan harus benar.</div>
         </div>
@@ -131,7 +131,7 @@
         const $pwd = $("#password");
         const type = $pwd.attr("type") === "password" ? "text" : "password";
         $pwd.attr("type", type);
-        $(this).text(type === "password" ? "🐵" : "🙈");
+        $(this).text(type === "password" ? "👁️‍🗨️" : "🚫");
       });
 
       // Validasi form login
