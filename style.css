@@ -2,8 +2,10 @@
     --hijau: #446b42;
     --jingga: #f8ae84;
     --kuning: #fffccf;
+     --green: #446B42;
+      --orange: #F8AE84;
+      --yellow: #FFFCCF;
 }
-
 .navbar-custom {
     background-color: var(--hijau);
 }
@@ -51,4 +53,126 @@ h2 {
         padding: 30px;
         margin-bottom: 40px;
         box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    }
+
+     .form-card {
+      background-color: var(--orange);
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      padding: 30px;
+      max-width: 600px;
+      margin: 60px auto;
+    }
+
+    h2 {
+      color: var(--green);
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    label {
+      color: var(--green);
+      font-weight: 600;
+    }
+
+    .form-control, .form-select {
+      border: 2px solid var(--green);
+      background-color: var(--yellow);
+    }
+
+    .form-control:focus, .form-select:focus {
+      border-color: var(--orange);
+      background-color: #fff;
+      box-shadow: 0 0 5px rgba(68,107,66,0.3);
+    }
+
+    .btn-submit {
+      background-color: var(--green);
+      color: #fff;
+      width: 100%;
+      border-radius: 8px;
+      padding: 10px;
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    .btn-submit:hover {
+      background-color: #355633;
+    }
+
+    .footer {
+      text-align: center;
+      font-size: 13px;
+      color: var(--green);
+      margin-top: 25px;
+    }
+     .login-card {
+      background-color: var(--orange);
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      padding: 30px;
+      max-width: 400px;
+      margin: 80px auto;
+    }
+
+    h2 {
+      color: var(--green);
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    label {
+      color: var(--green);
+      font-weight: 600;
+    }
+
+    .form-control {
+      border: 2px solid var(--green);
+      background-color: var(--yellow);
+    }
+
+    .form-control:focus {
+      border-color: var(--orange);
+      background-color: #fff;
+      box-shadow: 0 0 5px rgba(68,107,66,0.3);
+    }
+
+    .btn-login {
+      background-color: var(--green);
+      color: #fff;
+      width: 100%;
+      border-radius: 8px;
+      padding: 10px;
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    .btn-login:hover {
+      background-color: #355633;
+    }
+
+    .toggle-password {
+      position: absolute;
+      right: 10px;
+      top: 38px;
+      background: none;
+      border: none;
+      color: var(--green);
+      cursor: pointer;
+    }
+
+    .hint {
+      font-size: 13px;
+      color: var(--green);
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .footer {
+      text-align: center;
+      font-size: 13px;
+      color: var(--green);
+      margin-top: 20px;
     }
