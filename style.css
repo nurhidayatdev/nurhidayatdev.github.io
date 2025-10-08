@@ -1,0 +1,27 @@
+:root {
+    --hijau: #446b42;
+    --jingga: #f8ae84;
+    --kuning: #fffccf;
+}
+
+.navbar-custom {
+    background-color: var(--hijau);
+}
+
+.navbar-custom .navbar-brand,
+.navbar-custom .nav-link {
+    color: var(--kuning);
+    transition: color 0.3s ease;
+}
+
+.navbar-custom .nav-link:hover {
+    color: var(--jingga);
+}
+
+.navbar-custom .navbar-toggler {
+    border-color: var(--kuning);
+}
+
+.navbar-custom .navbar-toggler-icon {
+    filter: brightness(0) invert(1);
+}
