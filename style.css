@@ -25,3 +25,30 @@
 .navbar-custom .navbar-toggler-icon {
     filter: brightness(0) invert(1);
 }
+
+h2 {
+        color: #446b42;
+        margin-bottom: 20px;
+        font-weight: 600;
+    }
+    table {
+        background-color: white;
+        border: 1px solid #446b42 !important;
+    }
+    th {
+        background-color: #446b42 !important;
+        color: white !important;
+    }
+    tr:nth-child(even) {
+        background-color: #f8ae84 !important;
+    }
+    tr:hover {
+        background-color: #ffe8d0 !important;
+    }
+    .section-box {
+        background: white;
+        border-radius: 10px;
+        padding: 30px;
+        margin-bottom: 40px;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    }
