@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Login Siswa - SD Inpres Maccini Sombala 1</title>
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
   <style>
-    :root{
+    :root {
       --green: #446B42;
       --orange: #F8AE84;
       --yellow: #FFFCCF;
@@ -16,223 +18,157 @@
     body {
       font-family: "Poppins", sans-serif;
       background-color: var(--yellow);
-      margin: 0;
-      padding: 0;
     }
 
-    .login-container {
-      width: 380px;
-      margin: 90px auto;
+    .login-card {
       background-color: var(--orange);
       border-radius: 15px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.15);
       padding: 30px;
-      text-align: center;
+      max-width: 400px;
+      margin: 80px auto;
     }
 
     h2 {
       color: var(--green);
+      font-weight: 700;
+      text-align: center;
       margin-bottom: 25px;
     }
 
     label {
-      display: block;
       color: var(--green);
       font-weight: 600;
-      margin-top: 15px;
-      text-align: left;
     }
 
-    .input-wrapper {
-      position: relative;
-    }
-
-    input[type="text"],
-    input[type="password"] {
-      width: 100%;
-      padding: 10px 40px 10px 10px; /* space for icon */
+    .form-control {
       border: 2px solid var(--green);
-      border-radius: 8px;
-      font-size: 14px;
-      margin-top: 5px;
-      outline: none;
       background-color: var(--yellow);
-      box-sizing: border-box;
     }
 
-    input:focus {
+    .form-control:focus {
       border-color: var(--orange);
       background-color: #fff;
-    }
-
-    /* tombol mata */
-    .toggle-password {
-      position: absolute;
-      right: 8px;
-      top: 50%;
-      transform: translateY(-50%);
-      background: transparent;
-      border: none;
-      cursor: pointer;
-      padding: 6px;
-      border-radius: 6px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .toggle-password:focus {
-      outline: 2px solid rgba(68,107,66,0.2);
+      box-shadow: 0 0 5px rgba(68,107,66,0.3);
     }
 
     .btn-login {
       background-color: var(--green);
-      color: white;
-      border: none;
-      padding: 10px 0;
+      color: #fff;
       width: 100%;
       border-radius: 8px;
+      padding: 10px;
       font-size: 16px;
-      margin-top: 20px;
-      cursor: pointer;
-      transition: 0.2s;
+      font-weight: 600;
     }
 
     .btn-login:hover {
       background-color: #355633;
     }
 
+    .toggle-password {
+      position: absolute;
+      right: 10px;
+      top: 38px;
+      background: none;
+      border: none;
+      color: var(--green);
+      cursor: pointer;
+    }
+
     .hint {
       font-size: 13px;
       color: var(--green);
-      margin-top: 8px;
-    }
-
-    .error {
-      color: #b72121;
-      font-size: 13px;
-      margin-top: 3px;
-      text-align: left;
+      text-align: center;
+      margin-top: 10px;
     }
 
     .footer {
-      margin-top: 25px;
-      color: var(--green);
+      text-align: center;
       font-size: 13px;
-    }
-
-    /* kecilkan ukuran di layar sempit */
-    @media (max-width:420px){
-      .login-container { width: 92%; margin:40px auto; padding:20px; }
+      color: var(--green);
+      margin-top: 20px;
     }
   </style>
 </head>
 <body>
 
-  <div class="login-container" role="form" aria-labelledby="login-heading">
-    <h2 id="login-heading">Login Siswa SD Inpres Maccini Sombala 1</h2>
+  <div class="container">
+    <div class="login-card">
+      <h2>Login Siswa SD Inpres Maccini Sombala 1</h2>
 
-    <form id="loginForm" novalidate>
-      <label for="nisn">NISN</label>
-      <input type="text" id="nisn" name="nisn" inputmode="numeric" placeholder="Masukkan NISN (10 digit)" aria-describedby="nisnError">
-      <div id="nisnError" class="error" aria-live="polite"></div>
+      <form id="loginForm" novalidate>
+        <div class="mb-3 position-relative">
+          <label for="nisn" class="form-label">NISN</label>
+          <input type="text" class="form-control" id="nisn" name="nisn" placeholder="Masukkan NISN (10 digit)">
+          <div class="invalid-feedback">NISN wajib diisi dan harus berupa 10 digit angka.</div>
+        </div>
 
-      <label for="password">Kata Sandi</label>
-      <div class="input-wrapper">
-        <input type="password" id="password" name="password" placeholder="Masukkan kata sandi" aria-describedby="passwordError" autocomplete="current-password">
-        <!-- Tombol show/hide password (ikon SVG) -->
-        <button type="button" class="toggle-password" id="togglePassword" aria-label="Tampilkan kata sandi" title="Tampilkan kata sandi">
-          <!-- mata tertutup (default) -->
-          <svg id="eyeClosed" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M17.94 17.94A10.94 10.94 0 0 1 12 20c-5 0-9.27-3.11-11-7.5a11.2 11.2 0 0 1 4.11-5.4"></path>
-            <path d="M1 1l22 22"></path>
-          </svg>
-          <!-- mata terbuka (disembunyikan awalnya) -->
-          <svg id="eyeOpen" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="display:none;">
-            <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"></path>
-            <circle cx="12" cy="12" r="3"></circle>
-          </svg>
-        </button>
-      </div>
-      <div id="passwordError" class="error" aria-live="polite"></div>
+        <div class="mb-3 position-relative">
+          <label for="password" class="form-label">Kata Sandi</label>
+          <input type="password" class="form-control" id="password" name="password" placeholder="Masukkan kata sandi">
+          <button type="button" class="toggle-password" id="togglePassword" aria-label="Tampilkan kata sandi">
+            🐵
+          </button>
+          <div class="invalid-feedback">Kata sandi wajib diisi dan harus benar.</div>
+        </div>
 
-      <button type="submit" class="btn-login">Masuk</button>
-      <div class="hint">Password tetap: <strong>sdmaccinisombala1</strong></div>
-    </form>
+        <button type="submit" class="btn btn-login mt-3">Masuk</button>
+        <div class="hint">Password tetap: <strong>sdmaccinisombala1</strong></div>
+      </form>
 
-    <div class="footer">© 2025 SD Inpres Maccini Sombala 1</div>
+      <div class="footer">© 2025 SD Inpres Maccini Sombala 1</div>
+    </div>
   </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
   <script>
     $(function() {
-      // Toggle show/hide password
+      // Tampilkan/sembunyikan password
       $("#togglePassword").on("click", function() {
         const $pwd = $("#password");
-        const type = $pwd.attr("type");
-        if (type === "password") {
-          $pwd.attr("type", "text");
-          $("#eyeClosed").hide();
-          $("#eyeOpen").show();
-          $(this).attr("aria-label","Sembunyikan kata sandi");
-          $(this).attr("title","Sembunyikan kata sandi");
-        } else {
-          $pwd.attr("type", "password");
-          $("#eyeOpen").hide();
-          $("#eyeClosed").show();
-          $(this).attr("aria-label","Tampilkan kata sandi");
-          $(this).attr("title","Tampilkan kata sandi");
-        }
+        const type = $pwd.attr("type") === "password" ? "text" : "password";
+        $pwd.attr("type", type);
+        $(this).text(type === "password" ? "🐵" : "🙈");
       });
 
-      // Optional: toggle on long-press (press & hold to view)
-      let pressTimer;
-      $("#togglePassword").on("mousedown touchstart", function() {
-        // tampilkan password saat ditekan lama
-        clearTimeout(pressTimer);
-        pressTimer = setTimeout(() => {
-          $("#password").attr("type","text");
-          $("#eyeClosed").hide();
-          $("#eyeOpen").show();
-        }, 150); // 150ms threshold
-      }).on("mouseup mouseleave touchend touchcancel", function() {
-        clearTimeout(pressTimer);
-        // kembalikan ke password type jika mata terbuka
-        if ($("#eyeOpen").is(":visible")) {
-          $("#password").attr("type","password");
-          $("#eyeOpen").hide();
-          $("#eyeClosed").show();
-        }
-      });
-
-      // Login validation (sama seperti sebelumnya)
+      // Validasi form login
       $("#loginForm").on("submit", function(e) {
         e.preventDefault();
-        $(".error").text("");
+        let valid = true;
+        const nisn = $("#nisn").val().trim();
+        const password = $("#password").val().trim();
 
-        let nisn = $("#nisn").val().trim();
-        let password = $("#password").val().trim();
-        let isValid = true;
+        // Reset state
+        $("#nisn").removeClass("is-invalid");
+        $("#password").removeClass("is-invalid");
 
-        if (nisn === "") {
-          $("#nisnError").text("NISN wajib diisi");
-          isValid = false;
-        } else if (!/^\d{10}$/.test(nisn)) {
-          $("#nisnError").text("NISN harus berupa 10 digit angka");
-          isValid = false;
+        // Validasi NISN
+        if (!/^\d{10}$/.test(nisn)) {
+          $("#nisn").addClass("is-invalid");
+          valid = false;
         }
 
-        if (password === "") {
-          $("#passwordError").text("Kata sandi wajib diisi");
-          isValid = false;
-        } else if (password !== "sdmaccinisombala1") {
-          $("#passwordError").text("Kata sandi salah, silakan coba lagi");
-          isValid = false;
+        // Validasi password
+        if (password !== "sdmaccinisombala1") {
+          $("#password").addClass("is-invalid");
+          valid = false;
         }
 
-        if (isValid) {
-          alert("Login berhasil! Selamat datang siswa NISN: " + nisn + " 🎉");
-          // arahkan ke halaman data siswa
-          window.location.href = "index.html";
+        // Jika valid
+        if (valid) {
+          const alertBox = `
+            <div class="alert alert-success mt-3 text-center" role="alert">
+              Login berhasil! Selamat datang, siswa NISN: <strong>${nisn}</strong> 🎉
+            </div>`;
+          $(".alert").remove();
+          $(".login-card").append(alertBox);
+
+          setTimeout(() => {
+            window.location.href = "index.html";
+          }, 2000);
         }
       });
     });
